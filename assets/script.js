@@ -24,7 +24,7 @@ const bannerSlides = document.querySelector(".banner-img");
 const bannerTagLine = document.querySelector("#banner p");
 const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
-const dotsSlides = document.querySelector(".dots");
+const dotsSlides = Array.from(document.querySelectorAll(".dot"));
 
 arrowLeft?.addEventListener("click", () => {
   count--;
@@ -43,7 +43,6 @@ const updateSlide = () => {
   bannerTagLine.innerHTML = slides[count].tagLine;
   updatesDots(count);
 };
-
 function updatesDots(index) {
   dotsSlides.forEach((dot, i) => {
     if (i === index) {
