@@ -39,14 +39,17 @@ arrowRight?.addEventListener("click", () => {
 });
 
 const updateSlide = () => {
-  bannerSlides.src = `./assets/images/slideshow/${slides[count].image}`;
-  bannerTagLine.innerHTML = slides[count].tagLine;
-  updatesDots(count);
+  if (bannerSlides && bannerTagLine) {
+    bannerSlides.src = `./assets/images/slideshow/${slides[count].image}`;
+    bannerTagLine.innerHTML = slides[count].tagLine;
+    updatesDots(count);
+  }
 };
 function updatesDots(index) {
   dotsSlides.forEach((dot, i) => {
     if (i === index) {
       dot.classList.add("dot_selected");
+      console.log("ici", bannerSlides);
     } else {
       dot.classList.remove("dot_selected");
     }
