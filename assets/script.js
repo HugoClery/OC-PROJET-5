@@ -26,6 +26,14 @@ const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
 const dotsSlides = Array.from(document.querySelectorAll(".dot"));
 
+const updateSlide = () => {
+  if (bannerSlides && bannerTagLine) {
+    bannerSlides.src = `./assets/images/slideshow/${slides[count].image}`;
+    bannerTagLine.innerHTML = slides[count].tagLine;
+    updatesDots(count);
+  }
+};
+
 arrowLeft?.addEventListener("click", () => {
   count--;
   if (count < 0) count = slides.length - 1;
@@ -38,18 +46,10 @@ arrowRight?.addEventListener("click", () => {
   updateSlide();
 });
 
-const updateSlide = () => {
-  if (bannerSlides && bannerTagLine) {
-    bannerSlides.src = `./assets/images/slideshow/${slides[count].image}`;
-    bannerTagLine.innerHTML = slides[count].tagLine;
-    updatesDots(count);
-  }
-};
 function updatesDots(index) {
   dotsSlides.forEach((dot, i) => {
     if (i === index) {
       dot.classList.add("dot_selected");
-      console.log("ici", bannerSlides);
     } else {
       dot.classList.remove("dot_selected");
     }
